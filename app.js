@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+app.use('/api/1.0', indexRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
@@ -37,5 +37,23 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
+var port =8000;
+app.listen(port,()=>{
+  console.log("Corriendo "+ port);
+});
 module.exports = app;
+
+// COMANDOS BASICOS
+/* 
+  docker-compose up
+  docker-compose stop
+  docker ps
+*/
+
+//1. INSTALAR MONGOSE  base de datos
+/*
+//ir a terminal introducir el siguiente comando mas el CONTAINER ID para que se instale destro del contenedor de la api proyecto_app
+  c7e7e7a7bbbe ejemplo de id container
+  
+  docker exec -it c7e7e7a7bbbe npm install mongoose
+*/
