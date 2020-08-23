@@ -5,7 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var userRouter = require('./routes/user');
+var restauranteRouter = require('./routes/restaurante');
 
 var app = express();
 
@@ -20,7 +21,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/1.0', indexRouter);
-app.use('/users', usersRouter);
+app.use('/api/1.0', userRouter);
+app.use('/api/1.0', restauranteRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -57,3 +59,11 @@ module.exports = app;
   
   docker exec -it c7e7e7a7bbbe npm install mongoose
 */
+//2. INSTALAR SHA1  para desifrar contra pero yo no cifre la contra aun
+/*
+//ir a terminal introducir el siguiente comando mas el CONTAINER ID para que se instale destro del contenedor de la api proyecto_app
+//c7e7e7a7bbbe ejemplo de id container
+ sudo docker exec -it  c7e7e7a7bbbe npm intall sha1
+
+*/
+ 
